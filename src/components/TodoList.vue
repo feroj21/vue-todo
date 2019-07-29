@@ -3,7 +3,7 @@
   <div class="bg-box">
       <h2>To Do: </h2>
       <ul class="list-group">
-          <li v-for="todo in incompleteTask">
+          <li v-for="(todo, index) in incompleteTask" :key="index">
             <todo v-bind:item="todo" @delete-task="deleteTask"></todo>
           </li>
       </ul>
@@ -22,14 +22,12 @@
     <div class="bg-box mt-20" v-if="completedTask.length">
       <h2>Completed Tasks </h2>
       <ul class="list-group">
-          <li v-for="todo in completedTask">
+          <li v-for="(todo, index) in completedTask" :key="index">
             {{ todo.title }}
           </li>
       </ul>
     </div>
 </div>
-  
-    
 </template>
 
 <script type = "text/javascript" >
@@ -39,58 +37,58 @@ export default {
   components: {
     Todo
   },
-  data() {
+  data () {
     return {
       todos: [],
       taskName: ''
-    };
+    }
   },
   computed: {
-    /** 
+    /**
      * Return incomplete task
     */
-    incompleteTask: function () {
+    incompleteTask () {
       return this.todos.filter(todo => {
-        return todo.done === false;
-      });
+        return todo.done === false
+      })
     },
 
-    /** 
+    /**
      * Return completed task
     */
-    completedTask: function () {
+    completedTask () {
       return this.todos.filter(todo => {
-        return todo.done === true;
-      });
+        return todo.done === true
+      })
     }
   },
   methods: {
-    /** 
+    /**
      * Add task
     */
-    addTask() {
+    addTask () {
       // If the task title empty then do nothing
       if (this.taskName === '') {
-        return;
+        return
       }
 
       this.todos.push({
         title: this.taskName,
         done: false
-      });
+      })
 
-      this.taskName = '';
+      this.taskName = ''
     },
 
-    /** 
-    *@param {Object} item 
+    /**
+    *@param {Object} item
     */
-    deleteTask(item) {
-        let index = this.todos.indexOf(item);
+    deleteTask (item) {
+      let index = this.todos.indexOf(item)
 
-        if (index > -1) {
-          this.todos.splice(index, 1);
-        }
+      if (index > -1) {
+        this.todos.splice(index, 1)
+      }
     }
   }
 }

@@ -14,16 +14,19 @@
 
 export default {
   props: ['item'],
-  mounted() {
-    console.log(this.item);
-  },
   methods: {
-    doneTask() {
-      this.item.done = true;
+    /**
+     * Task done method
+    */
+    doneTask () {
+      this.item.done = true
     },
 
-    deleteTask() {
-      this.$emit('delete-task', this.item);
+    /**
+     * Delete task
+    */
+    deleteTask () {
+      this.$emit('delete-task', this.item)
     }
   }
 }
