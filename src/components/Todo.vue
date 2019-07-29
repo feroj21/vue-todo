@@ -4,8 +4,8 @@
         {{ item.title }}
     </div>
     <div class="item action">
-      <a href="#">Done</a>
-      <a href="#">Delete</a>
+      <a href="#" @click.prevent="doneTask()">Done</a>
+      <a href="#" @click.prevent="deleteTask()">Delete</a>
     </div>
   </div>
 </template>
@@ -16,6 +16,15 @@ export default {
   props: ['item'],
   mounted() {
     console.log(this.item);
+  },
+  methods: {
+    doneTask() {
+      this.item.done = true;
+    },
+
+    deleteTask() {
+      this.$emit('delete-task', this.item);
+    }
   }
 }
 
