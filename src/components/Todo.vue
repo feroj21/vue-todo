@@ -4,8 +4,8 @@
         {{ item.title }}
     </div>
     <div class="item action">
-      <a href="#" @click.prevent="doneTask()">Done</a>
-      <a href="#" @click.prevent="deleteTask()">Delete</a>
+      <a class="btn done" href="#" @click.prevent="doneTask()">✓</a>
+      <a class="btn delete" href="#" @click.prevent="deleteTask()">✘</a>
     </div>
   </div>
 </template>
@@ -33,4 +33,19 @@ export default {
 .todo-item {
   display: flex;
 }
+.todo-title {
+  width: 84%;
+}
+.done {
+  color: #fff;
+  background-color: #28a745;
+  border-color: #28a745;
+}
+
+.delete {
+  color: #fff;
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+
 </style>

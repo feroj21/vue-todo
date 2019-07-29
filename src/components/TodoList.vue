@@ -8,14 +8,18 @@
           </li>
       </ul>
 
-      <div class="form">
-        <label for="task">Task</label>
-        <input type="text" v-model="taskName" placeholder="What do you need to do">
-        <button @click.prevent="addTask()">Save Item</button>
+      <div class="form mt-20">
+        <div class="form-group">
+          <label class="label" for="task">Task</label>
+          <input class="input-field" type="text" v-model="taskName" placeholder="What do you need to do">
+        </div>
+        <div class="action-group mt-20 text-right">
+            <button class="btn btn-primary" @click.prevent="addTask()">Save Item</button>
+        </div>
       </div>
     </div>
 
-    <div class="bg-box" v-if="completedTask.length">
+    <div class="bg-box mt-20" v-if="completedTask.length">
       <h2>Completed Tasks </h2>
       <ul class="list-group">
           <li v-for="todo in completedTask">
